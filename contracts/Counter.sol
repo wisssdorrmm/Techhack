@@ -1,19 +1,15 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
 contract Counter {
-  uint public x;
+    uint256 public count;
 
-  event Increment(uint by);
+    function increment() public {
+        count += 1;
+    }
 
-  function inc() public {
-    x++;
-    emit Increment(1);
-  }
-
-  function incBy(uint by) public {
-    require(by > 0, "incBy: increment should be positive");
-    x += by;
-    emit Increment(by);
-  }
+    function decrement() public {
+        require(count > 0, "Counter: cannot go below zero");
+        count -= 1;
+    }
 }
